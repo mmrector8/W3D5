@@ -52,18 +52,24 @@ class PolyTreeNode
         return nil
 
     end
+    require "byebug"
+    def bfs(target)
+        queue_arr = [self]
+        
+        while queue_arr.length > 0
+            first_val = queue_arr.shift
 
+            if first_val.value  == target
+                return first_val
+            else
+                first_val.children.each do |child|
+                    queue_arr << child
+                end
+            end    
+        end
+    end
 
 end
 
-# a = PolyTreeNode.new('a')
-# b = PolyTreeNode.new('b')
-# c = PolyTreeNode.new('c')
-# d = PolyTreeNode.new('d')
-# e = PolyTreeNode.new('e')
 
-# a.add_child(b)
-# a.add_child(c)
-# b.add_child(d)
-# b.add_child(e)
-# puts a
+
